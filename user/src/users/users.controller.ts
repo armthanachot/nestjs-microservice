@@ -1,5 +1,5 @@
 import { Body, Controller, Req, Res } from '@nestjs/common';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { EventPattern, MessagePattern, Payload } from '@nestjs/microservices';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -22,6 +22,15 @@ export class UsersController {
   @MessagePattern('login')
   async login(@Req() req: Request, @Res() res: Response, @Body() payload) {
     return this.usersService.login(payload)
+  }
+
+  //for test
+  @EventPattern('auth_created')
+  async sendNoti(@Req() req: Request, @Res() res: Response, @Body() payload){
+    console.log(12345);
+    console.log(payload);
+    
+    return 'sent Noti'
   }
 
   @MessagePattern('findOneUser')

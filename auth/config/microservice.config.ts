@@ -7,3 +7,14 @@ export const userMicroserviceClient: ClientProxy = ClientProxyFactory.create({
         port: Number(process.env.USER_MICROSERVICE_PORT)
     }
 })
+
+export const customerMicroserviceClient: ClientProxy = ClientProxyFactory.create({
+    transport: Transport.RMQ,
+    options: {
+        urls: [process.env.CUSTOMER_MICROSERVICE_HOST],
+        queue: process.env.CUSTOMER_MICROSERVICE_QUEUE_NAME,
+        queueOptions: {
+            durable: false
+        },
+    }
+})

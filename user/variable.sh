@@ -1,1 +1,2 @@
+export APP_HOST=127.0.0.1
 export APP_PORT=8002

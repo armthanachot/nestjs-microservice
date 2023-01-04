@@ -11,3 +11,6 @@
 ตัว client sv จะ send message ไปหา microservice ตามที่ microservice provide message ไว้ จากนั้น ก็เข้ากระบวนการต่างๆ แล้ว microservice ก็ response กลับมา
 
 request => auth => users => auth
+
+
+docker run -d --hostname rabbitmq --name rabbitmq-server -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin rabbitmq:3-management

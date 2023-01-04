@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { userMicroserviceClient } from 'config/microservice.config';
-import { catchError, of } from 'rxjs';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 @Injectable()
@@ -10,7 +9,7 @@ export class AuthService {
   }
 
   create(createAuthDto: CreateAuthDto) {
-    return 'This action adds a new auth';
+    return userMicroserviceClient.send('auth_created',createAuthDto)
   }
 
   login(payload: { userName: string, password: string }) {
