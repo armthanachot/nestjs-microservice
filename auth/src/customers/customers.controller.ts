@@ -15,13 +15,13 @@ export class CustomersController {
 
   @Get()
   async findAll(@Req() req: Request, @Res() res: Response) {
-    const resp = this.customersService.findAll();
+    // const resp = this.customersService.findAll();
     const sentMessage = await this.customersService.sendMessageToRMQ("My Data Is Hello World")
-    resp.subscribe((data) => {
-      console.log(data);
+    // resp.subscribe((data) => {
+    //   console.log(data);
       
-      return res.status(200).json({ messag: 'OK', data })
-    })
+    //   return res.status(200).json({ messag: 'OK', data })
+    // })
     return 'OK'
   }
 
